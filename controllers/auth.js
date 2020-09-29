@@ -77,6 +77,7 @@ exports.checkLogin = (req, res) => {
         res.status(200).json({ user: decodedToken, message: 'sign in successfully'})
       }
     })
-  }
+  } else {
   console.log(`Token not Found: ${token}`)
+  }
 }
