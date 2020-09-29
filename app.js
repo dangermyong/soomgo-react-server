@@ -18,7 +18,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(cors({
-  origin: '*',
+  origin: 'http://localhost:3000',
   credentials: true,
 }))
 
