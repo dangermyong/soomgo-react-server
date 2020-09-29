@@ -66,7 +66,7 @@ exports.signout = (req, res) => {
   res.status(200).json({message: 'Signout Success'})
 }
 
-exports.checkLogin = (req, res) => {
+exports = (req, res) => {
   const token = req.cookies.jwt
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
