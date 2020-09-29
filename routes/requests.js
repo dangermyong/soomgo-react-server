@@ -20,7 +20,7 @@ router.post('/sent', async (req, res, next) => {
     const newResults = await Promise.all(promises)
     console.log(newResults)
     connection.release()
-    res.status(200).json({ userName: req.token.name , results: newResults});
+    res.status(200).json({ userName: user.name , results: newResults});
   } catch (err) {
     console.log(err);
     res.status(500).json({ msg : '리퀘스트 에러가 났어요!'});
