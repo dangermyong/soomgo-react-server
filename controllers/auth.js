@@ -3,7 +3,6 @@ const pool = require('../utils/mysql.js')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
-
 const maxAge = 24 * 60 * 60 * 10;
 
 exports.signup = async (req, res) => {
@@ -66,7 +65,7 @@ exports.signout = (req, res) => {
   res.status(200).json({message: 'Signout Success'})
 }
 
-exports = (req, res) => {
+exports.checkLogin = (req, res) => {
   const token = req.cookies.jwt
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
