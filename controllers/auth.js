@@ -78,4 +78,5 @@ exports.checkLogin = (req, res) => {
       }
     })
   }
+  console.log(`Token not Found: ${token}`)
 }
