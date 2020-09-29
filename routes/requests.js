@@ -4,12 +4,12 @@ const pool = require('../utils/mysql.js');
 const { requireAuth } = require('../utils/authMiddleware.js')
 require('dotenv').config();
 
-router.get('/sent', requireAuth, async (req, res, next) => {
+router.post('/sent', async (req, res, next) => {
   try{
-    console.log(req.token.id)
+    const id = req.body.id
     const connection = await pool.getConnection();
-    const [user] = await connection.query('SELECT * FROM USER_TB WHERE id = ?', [req.token.id]);
-    const [results] = await connection.query('SELECT * FROM REQUEST_TB WHERE userId = ?', [req.token.id])
+    const [user] = await connection.query('SELECT * FROM USER_TB WHERE id = ?', [id]);
+    const [results] = await connection.query('SELECT * FROM REQUEST_TB WHERE userId = ?', [id])
     const promises = results.map(async result => {
       const [estimates] = await connection.query('SELECT * FROM ESTIMATES_TB JOIN GOSU_TB ON ESTIMATES_TB.gosuId = GOSU_TB.id WHERE ESTIMATES_TB.requestId = ?', result.id)
       return ({
