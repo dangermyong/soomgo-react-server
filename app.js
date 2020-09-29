@@ -9,6 +9,7 @@ require('dotenv').config()
 const authRoutes = require('./routes/auth')
 const searchRoutes = require('./routes/search')
 const requestsRoutes = require('./routes/requests')
+const profileRoutes = require('./routes/profile')
 
 // app
 const app = express()
@@ -25,8 +26,9 @@ app.use(cors({
 
   //routes middleware
 app.use('/api', authRoutes)
-app.use('/api', searchRoutes)
+app.use('/api/search', searchRoutes)
 app.use('/api/requests', requestsRoutes)
+app.use('/api/profile', profileRoutes)
 
 const port = process.env.PORT || 5000
 app.listen(port, () => {
