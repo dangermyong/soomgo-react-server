@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 
 app.use(cors({
-  origin: '*',
+  origin: 'http://soomgo-react-server.com.s3-website.ap-northeast-2.amazonaws.com',
   credentials: true,
 }))
 
